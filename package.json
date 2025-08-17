@@ -3,7 +3,9 @@
 	"scripts": {
 		"dev": "next dev --turbo",
 		"build": "next build",
-		"start": "next start"
+		"start": "next start",
+		"deploy": "touch out/.nojekyll && gh-pages -d out -t true"
+
 	},
 	"dependencies": {
 		"next": "^15.1.7",

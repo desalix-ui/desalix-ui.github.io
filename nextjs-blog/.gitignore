@@ -3,28 +3,20 @@
 # dependencies
 /node_modules
 /.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+.pnp.js
 
 # testing
 /coverage
 
 # next.js
 /.next/
-
-# The `out` directory should not be ignored by version control
-# /out/
+/out/
 
 # production
 /build
 
 # misc
 .DS_Store
-*.pem
 
 # debug
 npm-debug.log*
@@ -32,11 +24,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*.local
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

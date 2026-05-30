@@ -1,0 +1,216 @@
+:root {
+  color-scheme: dark;
+  --ink: #f5f8f2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 82% 14%, #444444 0%, #272a27 34%, #0e100e 76%);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.landing {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: clamp(24px, 5vw, 72px);
+}
+
+.mark {
+  position: relative;
+  display: grid;
+  width: min(78vw, 760px);
+  min-width: 280px;
+  aspect-ratio: 1.25;
+  place-items: center;
+}
+
+.logo,
+.sprig,
+.leaf,
+.bee {
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.logo {
+  position: relative;
+  z-index: 5;
+  width: min(78%, 560px);
+  height: auto;
+  opacity: 0;
+  filter: drop-shadow(0 18px 38px rgba(0, 0, 0, 0.22));
+  animation: logoIn 900ms ease-out 120ms forwards;
+}
+
+.sprig {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(68vw, 560px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  transform: translate(-50%, -39%);
+}
+
+.leaf,
+.bee {
+  position: absolute;
+  height: auto;
+}
+
+.leaf-right {
+  z-index: 4;
+  right: 4%;
+  bottom: 5%;
+  width: 55%;
+  opacity: 0;
+  transform-origin: 11% 88%;
+  transform: translate(-22%, 11%) rotate(-16deg) scale(0.42);
+  animation: growRight 950ms cubic-bezier(0.16, 0.86, 0.28, 1) 950ms forwards;
+}
+
+.bee {
+  z-index: 3;
+  left: 50%;
+  top: 0%;
+  width: min(775px, 82vw, calc(72vh * 1.198));
+  opacity: 0;
+  transform: translate(-50%, 9px) scale(0.92);
+  animation:
+    beeIn 650ms ease-out 1850ms forwards,
+    hover 3.1s ease-in-out 2500ms infinite;
+}
+
+.leaf-left {
+  z-index: 2;
+  left: 1%;
+  bottom: 5.25%;
+  width: 55%;
+  opacity: 0;
+  transform-origin: 89% 88%;
+  transform: translate(22%, 12%) rotate(16deg) scale(0.42);
+  animation: growLeft 950ms cubic-bezier(0.16, 0.86, 0.28, 1) 1180ms forwards;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes logoIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes growRight {
+  0% {
+    opacity: 0;
+    transform: translate(-22%, 11%) rotate(-16deg) scale(0.42);
+  }
+
+  72% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes growLeft {
+  0% {
+    opacity: 0;
+    transform: translate(22%, 12%) rotate(16deg) scale(0.42);
+  }
+
+  72% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes beeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 9px) scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+@keyframes hover {
+  0%,
+  100% {
+    transform: translate(-50%, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -14px) scale(1);
+  }
+}
+
+@media (max-width: 620px) {
+  .mark {
+    width: min(92vw, 440px);
+    aspect-ratio: 0.9;
+  }
+
+  .logo {
+    width: 86%;
+  }
+
+  .sprig {
+    top: 53%;
+    width: min(96vw, 420px);
+  }
+
+  .bee {
+    top: 28%;
+    width: min(775px, 88vw, calc(64vh * 1.198));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo,
+  .leaf,
+  .bee {
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+    animation-delay: 0ms;
+  }
+}
